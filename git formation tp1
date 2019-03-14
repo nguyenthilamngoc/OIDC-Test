@@ -36,3 +36,28 @@ git blame -L 1332 commit.c | head -n 1 | cut -d " " -f 1
 git show 08a94a14
 
 ou
+git log 08a94a14
+
+### Sur les branches
+
+1. Combien de branches possèdent le projet
+
+git branch -a | grep remotes | grep -v "HEAD" | wc -l
+
+2. Combien de versions possèdent le logiciel
+
+git tag | grep "^v" | wc -l
+
+git tag | grep -v "rc" | grep "^v" | wc -l # Version stable
+
+3. Quel est la dernière version stable ?
+
+git tag | grep "^v" | sort -r | head -n 1
+
+4. Combien de fichiers ont été modifiés entre la version v1.0.0 et v1.0.0a
+
+git diff v1.0.0 v1.0.0a --name-only | wc -l
+
+5. Combien de commits ont été créés entre la version v1.0.0 et v1.0.0a
+
+git log v1.0.0..v1.0.0a --oneline | wc -l
