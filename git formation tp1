@@ -1,0 +1,38 @@
+git formation:
+https://hebdo.framapad.org/p/formationgit
+# Formation GIT du 14 mars 2019
+
+Depuis le dépôt git https://github.com/git/git.git
+
+### Sur la branche master
+
+1. Qui a fait l'avant dernier commit et à quelle date ?
+
+git log -n 2 | grep "Date" | tail -n 1
+
+2. Quel est le dernier fichier modifié
+
+git log --stat | grep "|" | head -n 1
+3. Quand a été modifié pour la dernière fois le fichier : La doc du git blame git-blame.txt
+
+git log --stat -n 1 Documentation/git-blame.txt
+
+4. Quelle modification a été effectuée à ce fichier lors du dernier commit ?
+
+git log --stat -n 1 -p Documentation/git-blame.txt
+5. Quel fichier à été modifié en dernier dans le dossier "perl"
+
+git log --stat --no-merges -n 1 perl/  | grep "|"
+6. Par qui et quand a été modifié la ligne 1332 du fichier commit.c
+
+git blame -L 1332 commit.c | head -n 1
+
+7. Quel est le numéro de commit de cette modification ligne 1332 ?
+
+git blame -L 1332 commit.c | head -n 1 | cut -d " " -f 1
+
+8. Quel est le commentaire écrit pour ce commit ?
+
+git show 08a94a14
+
+ou
