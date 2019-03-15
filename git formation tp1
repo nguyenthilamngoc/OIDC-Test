@@ -61,3 +61,47 @@ git diff v1.0.0 v1.0.0a --name-only | wc -l
 5. Combien de commits ont été créés entre la version v1.0.0 et v1.0.0a
 
 git log v1.0.0..v1.0.0a --oneline | wc -l
+6. Que manquait-il dans le fichier server-info.c de la version v1.0.0
+
+git log -p v1.0.0..v1.0.0a server-info.c
+
+ou 
+
+git diff v1.0.0 v1.0.0a server-info.c
+
+7. Quelle est la date de la première version de git
+
+git log v0.99 --format="%ad" -n 1
+
+8. De quelle façon sont utilisées les branches master, maint et next?
+
+https://github.com/git/git/blob/master/Documentation/SubmittingPatches
+
+pretty-lo à ajouter dans .gitconfig
+[alias]
+        lg = log --tags --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        
+        
+        
+     ### Statistiques
+
+1. Combien de commit dans la branch master ?
+
+git log --oneline master | wc -l
+
+2. Combien de contributeurs dans le projet ?
+
+git shortlog -s | wc -l
+nguyen thai ngoc duy :>1100 commits
+
+3. Quel est le contributeurs le plus actif ? Combien de commits à t'il fait
+
+git shortlog -s | sort -n | tail -n 1
+
+4. When was introduiced the option push.default simple in the documentation?
+
+
+
+5. Qui cuisine le plus dans la branche todo?
+
+   
